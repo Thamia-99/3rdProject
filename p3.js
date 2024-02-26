@@ -46,11 +46,10 @@ function startQuiz() {
 function showQuestion() {
   resetState();
   let currentQuestion = questions[currentQuestionIndex];
-  let questionNo = currentQuestion + 1;
+  let questionNo = currentQuestionIndex + 1;
   questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
 
-  // clear previous answer buttons
-  answerButton.innerHTML = " ";
+  answerButton.innerHTML = "";
 
   currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button");
@@ -91,7 +90,7 @@ function selectAnswer(e) {
 
 function showScore() {
   resetState();
-  questionElement.innerHTML = `You score ${score} out of ${questions.length}!`;
+  questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
   nextButton.innerHTML = "Play again";
   nextButton.style.display = "block";
 }
@@ -106,7 +105,7 @@ function handleNextButton() {
 }
 
 nextButton.addEventListener("click", () => {
-  if (currentQuestionIndex < questions.length) {
+  if (currentQuestionIndex < questions.length - 1) {
     handleNextButton();
   } else {
     startQuiz();
