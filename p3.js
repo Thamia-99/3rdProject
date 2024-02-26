@@ -76,6 +76,7 @@ function selectAnswer(e) {
   if (isCorrect) {
     selectedBtn.classList.add("correct");
     score++; // Increment score if the answer is correct
+    console.log("Current score", score);
   } else {
     selectedBtn.classList.add("incorrect");
   }
